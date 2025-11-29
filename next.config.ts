@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
+import { withContentlayer } from "next-contentlayer2";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  pageExtensions: ["ts", "tsx", "md", "mdx"],
+  experimental: {
+    mdxRs: true,
+  },
 };
 
-export default nextConfig;
+// Contentlayer requiere webpack, no Turbopack
+// Usa `pnpm run dev --webpack` para development
+export default withContentlayer(nextConfig);
